@@ -1,16 +1,16 @@
 import React from 'react'
 import Navbar from "@/components/ui/Navbar";
+import { Background } from './ui/background';
+import { Newsletter } from './ui/newsletter';
+import { Footer } from './ui/footer';
 
 const Hero = () => {
   return (
-    <div>
-        <div>
-            <Navbar />
-        </div>
-        <div className="pt-30 pb-20 py-20 dark:bg-white bg-gray-100">
-
-        </div>
-    </div>
+    <>
+      <Background src="/bg2.mp4" />
+      <Newsletter />
+      <Footer />
+    </>
   )
 }
 export default Hero

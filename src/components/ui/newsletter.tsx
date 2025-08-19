@@ -169,7 +169,7 @@ export const Newsletter = () => {
             className={isOpen ? "my-6" : "mt-6"}
           >
             <Button
-              className={cn("relative px-8 py-4")}
+              className={cn("relative px-8 py-4 bottom-0")}
               onClick={() => setIsOpen(!isOpen)}
             
               shine={!isOpen}
