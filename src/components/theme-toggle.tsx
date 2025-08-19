@@ -1,47 +1,34 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-
-function readCookie(name: string): string | undefined {
-    const m = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([.$?*|{}()\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"));
-    return m ? decodeURIComponent(m[1]) : undefined;
-}
+import { useEffect, useState } from "react";
 
 function writeCookie(name: string, value: string) {
     document.cookie = `${name}=${encodeURIComponent(value)}; Path=/; Max-Age=31536000; SameSite=Lax`;
 }
 
 export function ThemeToggle() {
-    const [isDark, setIsDark] = useState<boolean | null>(null);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => setMounted(true), []);
 
     useEffect(() => {
-        const cookieTheme = readCookie("theme");
-        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const dark = cookieTheme ? cookieTheme === "dark" : prefersDark;
-        setIsDark(dark);
         const html = document.documentElement;
-        html.classList.toggle("dark", dark);
+        const dark = html.classList.contains("dark");
         html.setAttribute("data-theme", dark ? "night" : "light");
     }, []);
 
-    const toggle = useCallback(() => {
-        setIsDark(prev => {
-            const next = !(prev ?? false);
-            const html = document.documentElement;
-            html.classList.toggle("dark", next);
-            html.setAttribute("data-theme", next ? "night" : "light");
-            writeCookie("theme", next ? "dark" : "light");
-            return next;
-        });
-    }, []);
-
-    if (isDark === null) return null;
+    const toggle = () => {
+        const nextDark = !document.documentElement.classList.contains("dark");
+        const html = document.documentElement;
+        html.classList.toggle("dark", nextDark);
+        html.setAttribute("data-theme", nextDark ? "night" : "light");
+        writeCookie("theme", nextDark ? "dark" : "light");
+    };
 
     return (
         <button onClick={toggle} className="btn btn-sm">
-            {isDark ? "Switch to Light" : "Switch to Dark"}
+            {mounted ? (document.documentElement.classList.contains("dark") ? "Switch to Light" : "Switch to Dark") : "Theme"}
         </button>
     );
 }
-
 

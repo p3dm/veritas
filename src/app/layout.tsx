@@ -10,6 +10,7 @@ import dynamic from "next/dynamic";
 import { cookies } from "next/headers";
 import { ThemeToggle } from "@/components/theme-toggle";
 
+
 const V0Setup = dynamic(() => import("@/components/ui/v0-setup"));
 
 const geistSans = Geist({
@@ -54,11 +55,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const cookieStore = await cookies();
-  const theme = cookieStore.get("theme")?.value;
+  const theme = cookieStore.get("theme")?.value as "light" | "dark" | undefined;
   const isDark = theme === "dark";
   return (
     <ClerkProvider>
       <html lang="en" className={cn(isDark && "dark")} data-theme={isDark ? "night" : "light"}>
+        <head></head>
         <body className={cn(geistSans.variable, geistMono.variable, arcuata.variable, "antialiased")}>
           <V0Provider isV0={isV0}>
             <header>

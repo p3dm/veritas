@@ -171,7 +171,6 @@ export const Newsletter = () => {
             <Button
               className={cn("relative px-8 py-4 bottom-0")}
               onClick={() => setIsOpen(!isOpen)}
-            
               shine={!isOpen}
             >
               <motion.span
@@ -211,7 +210,7 @@ export const Newsletter = () => {
               transition={{ duration: DURATION, ease: EASE_OUT }}
               className="absolute top-6 left-1/2 -translate-x-1/2 z-20"
             >
-              <div className="flex items-center absolute top-6 left-1/2 -translate-x-1/2 gap-6 px-6 py-3 rounded-full border border-border/50 bg-background/70 backdrop-blur-xl ring-1 ring-border/10 shadow-button">
+              <div className="flex items-center absolute top-6 left-1/2 -translate-x-1/2 gap-6 px-6 py-3 rounded-full border border-base-300 bg-background/70 backdrop-blur-xl ring-1 ring-base-200 shadow-button">
                 <motion.h1
                   layoutId="newsletter-title"
                   transition={SPRING}
