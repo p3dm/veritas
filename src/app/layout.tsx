@@ -7,6 +7,8 @@ import { ClerkProvider, SignInButton, SignUpButton, SignedIn, SignedOut, UserBut
 import { cn } from "@/lib/utils";
 import { V0Provider } from "@/lib/context";
 import dynamic from "next/dynamic";
+import { cookies } from "next/headers";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const V0Setup = dynamic(() => import("@/components/ui/v0-setup"));
 
@@ -43,17 +45,20 @@ export const metadata: Metadata = {
     template: "%s | VeritasEnglish®",
     default: "VeritasEnglish",
   },
-  description: "We stand at the forefront of a new era, where creativity meets technology to redefine what's possible. Our mission is to empower individuals and businesses alike with groundbreaking solutions that inspire change and drive progress.",
+  description: "Learn with Truth, Succeed with Proof",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const theme = cookieStore.get("theme")?.value;
+  const isDark = theme === "dark";
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" className={cn(isDark && "dark")} data-theme={isDark ? "night" : "light"}>
         <body className={cn(geistSans.variable, geistMono.variable, arcuata.variable, "antialiased")}>
           <V0Provider isV0={isV0}>
             <header>
@@ -64,6 +69,7 @@ export default function RootLayout({
               <SignedIn>
                 <UserButton />
               </SignedIn>
+              <ThemeToggle />
             </header>
             {children}
             {isV0 && <V0Setup />}
