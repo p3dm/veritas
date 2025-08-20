@@ -1,4 +1,4 @@
-import { ThemeSwitcher } from "@/components/theme-switcher";
+import { ThemeSwitcher } from "@/components/theme/theme-switcher";
 import Link from "next/link";
 
 export default function ProtectedLayout({

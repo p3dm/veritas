@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import localFont from "next/font/local";
 import { ClerkProvider, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { ThemeProvider } from "next-themes";
 import Link from "next/link";
@@ -21,6 +22,16 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+const arcuataSerif = localFont({
+  src: [
+    {
+      path: "../../public/fonts/Arcuata-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -29,8 +40,8 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body className={`${geistSans.className} antialiased`}>
-          <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <body className={`${geistSans.className} ${arcuataSerif.className} antialiased`}>
+          <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem >
             <header className="p-4 border-b flex items-center gap-3">
               <SignedOut>
                 <Link href="/sign-in">Sign in</Link>
