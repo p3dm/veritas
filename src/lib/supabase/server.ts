@@ -1,6 +1,5 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
-import { auth } from "@clerk/nextjs/server";
 
 /**
  * Especially important if using Fluid compute: Don't put this client in a
@@ -12,11 +11,8 @@ export async function createClient() {
 
   return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_KEY!,
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_OR_ANON_KEY!,
     {
-      async accessToken() {
-        return (await auth()).getToken();
-      },
       cookies: {
         getAll() {
           return cookieStore.getAll();

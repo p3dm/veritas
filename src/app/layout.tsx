@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
-import localFont from "next/font/local";
-import { ClerkProvider, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { ThemeProvider } from "next-themes";
-import Link from "next/link";
-import "./globals.css";
+import "@/styles/globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -22,39 +19,23 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const arcuataSerif = localFont({
-  src: [
-    {
-      path: "../../public/fonts/Arcuata-Regular.otf",
-      weight: "400",
-      style: "normal",
-    },
-  ],
-});
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en" suppressHydrationWarning>
-        <body className={`${geistSans.className} ${arcuataSerif.className} antialiased`}>
-          <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem >
-            <header className="p-4 border-b flex items-center gap-3">
-              <SignedOut>
-                <Link href="/sign-in">Sign in</Link>
-                <Link href="/sign-up">Sign up</Link>
-              </SignedOut>
-              <SignedIn>
-                <UserButton />
-              </SignedIn>
-            </header>
-            {children}
-          </ThemeProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${geistSans.className} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }
