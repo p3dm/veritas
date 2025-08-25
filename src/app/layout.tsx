@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
 import "@/styles/globals.css";
 
@@ -19,6 +20,16 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+const arcuataSerif = localFont({
+  src: [
+    {
+      path: "../../public/fonts/Arcuata-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -26,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.className} antialiased`}>
+      <body className={`${arcuataSerif.className} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
