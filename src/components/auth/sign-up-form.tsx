@@ -26,10 +26,10 @@ export function SignUpForm({
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const supabase = createClient();
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
-    const supabase = createClient();
     setIsLoading(true);
     setError(null);
 
@@ -57,12 +57,11 @@ export function SignUpForm({
   };
 
   const handleGoogleSignIn = async () => {
-    const supabase = createClient();
     setIsLoading(true);
     setError(null);
 
     try {
-      const { data, error } = await supabase.auth.signInWithOAuth({
+      const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
           redirectTo: getSupabaseAuthRedirectURL(
@@ -86,18 +85,16 @@ export function SignUpForm({
   };
 
   const handleFacebookSignIn = async () => {
-    const supabase = createClient();
     setIsLoading(true);
     setError(null);
 
     try {
-      const { data, error } = await supabase.auth.signInWithOAuth({
+      const { error } = await supabase.auth.signInWithOAuth({
         provider: "facebook",
         options: {
           redirectTo: getSupabaseAuthRedirectURL(
             "/auth/callback?next=/protected"
           ),
-          // redirectTo: `${window.location.origin}/auth/callback?next=/protected`,
         },
       });
       if (error) throw error;
