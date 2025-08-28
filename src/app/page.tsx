@@ -1,6 +1,6 @@
 import { AuthButton } from "@/components/auth/auth-button";
 import { Hero } from "@/components/hero";
-import { ThemeSwitcher } from "@/components/theme-switcher";
+import { ThemeToggle } from "@/components/layout/theme-switcher";
 import { SignUpUserSteps } from "@/components/tutorial/sign-up-user-steps";
 import Link from "next/link";
 
@@ -36,7 +36,7 @@ export default function Home() {
               Supabase
             </a>
           </p>
-          <ThemeSwitcher />
+          <ThemeToggle />
         </footer>
       </div>
     </main>

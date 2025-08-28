@@ -1,6 +1,6 @@
 "use client";
 
-import { cn, getSupabaseAuthRedirectURL } from "@/lib/utils";
+import { cn, getUrl } from "@/lib/utils";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import {
@@ -56,10 +56,10 @@ export function LoginForm({
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: getSupabaseAuthRedirectURL(
+          redirectTo: getUrl(
             `/auth/callback${
               nextPath ? `?next=${encodeURIComponent(nextPath)}` : ""
-            }`
+            }`,
           ),
           queryParams: {
             access_type: "offline",
@@ -70,7 +70,9 @@ export function LoginForm({
       if (error) throw error;
     } catch (error: unknown) {
       setError(
-        error instanceof Error ? error.message : "Failed to sign in with Google"
+        error instanceof Error
+          ? error.message
+          : "Failed to sign in with Google",
       );
       setIsLoading(false);
     }
@@ -84,10 +86,10 @@ export function LoginForm({
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "facebook",
         options: {
-          redirectTo: getSupabaseAuthRedirectURL(
+          redirectTo: getUrl(
             `/auth/callback${
               nextPath ? `?next=${encodeURIComponent(nextPath)}` : ""
-            }`
+            }`,
           ),
         },
       });
@@ -96,7 +98,7 @@ export function LoginForm({
       setError(
         error instanceof Error
           ? error.message
-          : "Failed to sign in with Facebook"
+          : "Failed to sign in with Facebook",
       );
       setIsLoading(false);
     }

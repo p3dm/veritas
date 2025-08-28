@@ -1,6 +1,6 @@
 "use client";
 
-import { cn, getSupabaseAuthRedirectURL } from "@/lib/utils";
+import { cn, getUrl } from "@/lib/utils";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import {
@@ -18,8 +18,9 @@ import { useState } from "react";
 
 export function SignUpForm({
   className,
+  nextPath = "/",
   ...props
-}: React.ComponentPropsWithoutRef<"div">) {
+}: React.ComponentPropsWithoutRef<"div"> & { nextPath?: string }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -44,7 +45,7 @@ export function SignUpForm({
         email,
         password,
         options: {
-          emailRedirectTo: `${window.location.origin}/protected`,
+          emailRedirectTo: getUrl(nextPath),
         },
       });
       if (error) throw error;
@@ -64,8 +65,10 @@ export function SignUpForm({
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: getSupabaseAuthRedirectURL(
-            "/auth/callback?next=/protected"
+          redirectTo: getUrl(
+            `/auth/callback${
+              nextPath ? `?next=${encodeURIComponent(nextPath)}` : ""
+            }`,
           ),
           queryParams: {
             access_type: "offline",
@@ -74,11 +77,11 @@ export function SignUpForm({
         },
       });
       if (error) throw error;
-
-      router.push("/protected");
     } catch (error: unknown) {
       setError(
-        error instanceof Error ? error.message : "Failed to sign in with Google"
+        error instanceof Error
+          ? error.message
+          : "Failed to sign in with Google",
       );
       setIsLoading(false);
     }
@@ -92,19 +95,19 @@ export function SignUpForm({
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "facebook",
         options: {
-          redirectTo: getSupabaseAuthRedirectURL(
-            "/auth/callback?next=/protected"
+          redirectTo: getUrl(
+            `/auth/callback${
+              nextPath ? `?next=${encodeURIComponent(nextPath)}` : ""
+            }`,
           ),
         },
       });
       if (error) throw error;
-
-      router.push("/protected");
     } catch (error: unknown) {
       setError(
         error instanceof Error
           ? error.message
-          : "Failed to sign in with Facebook"
+          : "Failed to sign in with Facebook",
       );
       setIsLoading(false);
     }
