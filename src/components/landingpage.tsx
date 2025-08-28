@@ -1,5 +1,6 @@
 import { Background } from "./ui/background";
 import { AuthButton } from "./auth/auth-button";
+import { Heading } from "./ui/heading";
 
 export function LandingPage() {
   return (
@@ -13,6 +14,7 @@ export function LandingPage() {
           <AuthButton />
         </div>
       </nav>
+      <Heading />
     </div>
   );
 }

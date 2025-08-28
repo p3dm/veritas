@@ -3,9 +3,6 @@ import { useEffect, useState, useRef } from "react";
 import { Button, buttonVariants } from "./button";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { useIsV0 } from "@/lib/context";
-
-
 
 const DURATION = 0.3;
 const DELAY = DURATION;
@@ -43,19 +40,19 @@ export const Heading = () => {
   }, []);
 
   return (
-    <div className="flex overflow-hidden relative flex-col gap-4 justify-center items-center pt-10 w-full h-full short:lg:pt-10">
+    <div className="flex overflow-hidden relative flex-col gap-4 justify-center items-center w-full h-full min-h-screen">
       <motion.div
         layout="position"
-        transition={{ duration: DURATION, ease: EASE_IN }}
+        transition={{ duration: DURATION, ease: EASE_OUT }}
       >
         <motion.h1
           layoutId="title"
-          className="font-arcuata text-5xl text-center short:lg:next-8xl sm:text-8xl lg:text-9xl"
+          className="italic text-5xl text-center short:lg:next-8xl sm:text-8xl lg:text-9xl mx-auto"
         >
           Veritas English
         </motion.h1>
       </motion.div>
-      <AnimatePresenceGuard>
+      <AnimatePresence>
         {!isOpen && (
           <motion.div
             key="newsletter"
@@ -158,13 +155,8 @@ export const Heading = () => {
             </div>
           </motion.nav>
         )}
-      </AnimatePresenceGuard>
+      </AnimatePresence>
     </div>
   );
 };
 
-const AnimatePresenceGuard = ({ children }: { children: React.ReactNode }) => {
-  const isV0 = useIsV0();
-
-  return isV0 ? <>{children}</> : <AnimatePresence mode="popLayout" propagate>{children}</AnimatePresence>;
-};
