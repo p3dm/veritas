@@ -17,7 +17,7 @@ export default function IELTSLayout({
               <Link href={"/ielts/dashboard"}>Veritas English</Link>
             </div>
             <div className="flex gap-3 items-center">
-              <Button asChild size="sm" variant={"default"}>
+              <Button>
                 <Link href="/ielts/profile">Profile</Link>
               </Button>
               <LogoutButton />

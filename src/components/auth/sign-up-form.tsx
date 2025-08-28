@@ -1,6 +1,6 @@
 "use client";
 
-import { cn, getUrl } from "@/lib/utils";
+import { cn, getBaseUrl } from "@/lib/utils";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import {
@@ -46,7 +46,7 @@ export function SignUpForm({
         email,
         password,
         options: {
-          emailRedirectTo: getUrl(nextPath),
+          emailRedirectTo: getBaseUrl(nextPath),
         },
       });
       if (error) throw error;
@@ -66,7 +66,7 @@ export function SignUpForm({
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: getUrl(
+          redirectTo: getBaseUrl(
             `/auth/callback${
               nextPath ? `?next=${encodeURIComponent(nextPath)}` : ""
             }`,
@@ -96,7 +96,7 @@ export function SignUpForm({
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "facebook",
         options: {
-          redirectTo: getUrl(
+          redirectTo: getBaseUrl(
             `/auth/callback${
               nextPath ? `?next=${encodeURIComponent(nextPath)}` : ""
             }`,
