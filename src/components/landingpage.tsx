@@ -1,9 +1,9 @@
-import { Background } from "./ui/background";   
+import { Background } from "./ui/background";
 
-export function LandingPage(){
-    return(
+export function LandingPage() {
+  return (
     <>
-        <Background src="/bg2.mp4"/>   
+      <Background src="/bg2.mp4" />
     </>
-    )
+  );
 }

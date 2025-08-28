@@ -130,8 +130,8 @@ export function SignUpForm({
                 className="w-full h-11 border border-gray-300 hover:bg-gray-50 hover:cursor-pointer"
                 onClick={handleGoogleSignIn}
               >
-              <Icons.google className="w-5 h-5" />
-              <span className="w-32 text-left">Sign up with Google</span>
+                <Icons.google className="w-5 h-5" />
+                <span className="w-32 text-left">Sign up with Google</span>
               </Button>
 
               <Button
@@ -140,8 +140,8 @@ export function SignUpForm({
                 className="w-full h-11 border border-gray-300 hover:bg-gray-50 hover:cursor-pointer"
                 onClick={handleFacebookSignIn}
               >
-              <Icons.facebook className="w-5 h-5" />
-              <span className="w-32 text-left">Sign up with Facebook</span>
+                <Icons.facebook className="w-5 h-5" />
+                <span className="w-32 text-left">Sign up with Facebook</span>
               </Button>
             </div>
 
