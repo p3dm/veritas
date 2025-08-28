@@ -5,7 +5,7 @@ import { InfoIcon } from "lucide-react";
 import { FetchDataSteps } from "@/components/tutorial/fetch-data-steps";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export default async function ProtectedPage() {
+export default async function ProfilePage() {
   const supabase = await createClient();
 
   const { data, error } = await supabase.auth.getUser();
@@ -20,7 +20,7 @@ export default async function ProtectedPage() {
     .single();
 
   return (
-    <div className="flex-1 w-full flex flex-col gap-12">
+    <div className="flex-1 flex flex-col gap-12">
       <div className="w-full">
         <div className="bg-accent text-sm p-3 px-5 rounded-md text-foreground flex gap-3 items-center">
           <InfoIcon size="16" strokeWidth={2} />

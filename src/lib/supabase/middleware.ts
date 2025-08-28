@@ -38,14 +38,14 @@ export async function updateSession(request: NextRequest) {
 
   // IMPORTANT: If you remove getClaims() and you use server-side rendering
   // with the Supabase client, your users may be randomly logged out.
-  const protectedPages = ["/protected{/*path}"];
+  const protectedPages = ["/ielts{/*path}"];
 
   const { data } = await supabase.auth.getClaims();
   const user = data?.claims;
 
   if (user && match("/auth/{*path}")(request.nextUrl.pathname)) {
     const url = request.nextUrl.clone();
-    url.pathname = "/";
+    url.pathname = "/ielts/dashboard";
     return NextResponse.redirect(url);
   }
 
