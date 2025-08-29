@@ -51,6 +51,9 @@ create table if not exists public.profiles (
   locale text not null default 'en',
   timezone text not null default 'UTC',
 
+  birthdate date,
+  gender text check (gender in ('male', 'female', 'other')),
+
   deleted_at timestamptz,
 
   created_at timestamptz not null default now(),
@@ -67,6 +70,8 @@ create table if not exists public.profiles (
 
 comment on table public.profiles is 'Public-facing user profiles (1:1 with auth.users).';
 comment on column public.profiles.username is 'Unique handle (case-insensitive); reusable after soft delete.';
+comment on column public.profiles.birthdate is 'User birth date for age verification and personalization.';
+comment on column public.profiles.gender is 'User gender identity (male, female, other).';
 comment on column public.profiles.deleted_at is 'Soft-delete marker; when set, profile is hidden and username can be reused.';
 
 -- Allow reuse of deleted usernames
