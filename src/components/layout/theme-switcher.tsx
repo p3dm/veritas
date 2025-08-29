@@ -36,7 +36,7 @@ export function ThemeToggle() {
     <Button
       variant="secondary"
       size="icon"
-      className="group/toggle size-8"
+      className="group/toggle size-8 hover:cursor-pointer"
       onClick={handleThemeToggle}
     >
       {resolvedTheme === "dark" ? <Sun /> : <Moon />}

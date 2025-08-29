@@ -3,6 +3,8 @@ import { useEffect, useState, useRef } from "react";
 import { Button, buttonVariants } from "./button";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import { X } from 'lucide-react';
+import { Cross1Icon } from "@radix-ui/react-icons";
 
 const DURATION = 0.3;
 const DELAY = DURATION;
@@ -47,41 +49,13 @@ export const Heading = () => {
       >
         <motion.h1
           layoutId="title"
-          className="italic text-5xl text-center short:lg:next-8xl sm:text-8xl lg:text-9xl mx-auto"
+          className="font-arcuata items-center text-5xl short:lg:text-8xl sm:text-8xl lg:text-9xl text-foreground"
         >
           Veritas English
         </motion.h1>
       </motion.div>
+    <div className="flex flex-col items-center min-h-0 shrink">
       <AnimatePresence>
-        {!isOpen && (
-          <motion.div
-            key="newsletter"
-            initial={isInitialRender.current ? false : "hidden"}
-            animate="visible"
-            exit="exit"
-            variants={{
-              visible: {
-                scale: 1,
-                transition: {
-                  delay: DELAY,
-                  duration: DURATION,
-                  ease: EASE_OUT,
-                },
-              },
-              hidden: {
-                scale: 0.9,
-                transition: { duration: DURATION, ease: EASE_OUT },
-              },
-              exit: {
-                y: -150,
-                scale: 0.9,
-                transition: { duration: DURATION, ease: EASE_OUT },
-              },
-            }}
-          >
-          </motion.div>
-        )}
-
         <motion.div
           layout="position"
           transition={SPRING}
@@ -99,6 +73,7 @@ export const Heading = () => {
               className="inline-block"
             >
               Let's dive in
+              
             </motion.span>
 
             {isOpen && (
@@ -115,6 +90,7 @@ export const Heading = () => {
                   delay: DELAY,
                 }}
               >
+                <Cross1Icon className="size-5 text-primary-foreground" />
               </motion.div>
             )}
           </Button>
@@ -129,17 +105,17 @@ export const Heading = () => {
             transition={{ duration: DURATION, ease: EASE_OUT }}
             className="absolute top-6 left-1/2 -translate-x-1/2 z-20"
           >
-            <div className="flex items-center absolute top-6 left-1/2 -translate-x-1/2 gap-6 px-6 py-3 rounded-full border border-base-300 bg-background/70 backdrop-blur-xl ring-1 ring-base-200 shadow-button">
+            <div className="flex items-center absolute top-6 left-1/2 -translate-x-1/2 gap-6 px-6 py-3 rounded-full border border-border bg-background/70 backdrop-blur-xl ring-1 ring-border shadow-button">
               <motion.h1
-                layoutId="newsletter-title"
+                layoutId="title"
                 transition={SPRING}
                 className="font-arcuata italic text-xl text-foreground"
               >
                 VeritasEnglish
               </motion.h1>
               <div className="h-6 w-px bg-border/50" />
-              <ul className="flex items-center gap-4 text-foreground/80 text-sm">
-                <li>
+              <ul className="flex items-center gap-4 text-foreground/80 text-sm"> 
+                <li>  
                   <button className={buttonVariants({ variant: "link", size: "sm" })}>Overview</button>
                 </li>
                 <li>
@@ -151,11 +127,14 @@ export const Heading = () => {
                 <li>
                   <button className={buttonVariants({ variant: "link", size: "sm" })}>Contact</button>
                 </li>
+                <li className="ml-auto">
+                </li>
               </ul>
             </div>
           </motion.nav>
         )}
       </AnimatePresence>
+    </div>
     </div>
   );
 };
