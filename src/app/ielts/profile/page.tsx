@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { InfoIcon } from "lucide-react";
 import { FetchDataSteps } from "@/components/tutorial/fetch-data-steps";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Image from "next/image";
 
 export default async function ProfilePage() {
   const supabase = await createClient();
@@ -67,7 +68,7 @@ export default async function ProfilePage() {
                   Avatar
                 </label>
                 <div className="mt-2">
-                  <img
+                  <Image
                     src={profile?.avatar_url}
                     alt="Profile avatar"
                     className="w-20 h-20 rounded-full object-cover"

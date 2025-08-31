@@ -99,7 +99,7 @@ export default function ProfileCustomizationStep({
       const selectedTheme = themes.find((t) => t.id === data.theme);
       return {
         main: `All set with ${selectedTheme?.name} theme and your goal!`,
-        sub: "Perfect! You're ready to start your personalized learning journey 🚀",
+        sub: "Perfect! You&rsquo;re ready to start your personalized learning journey 🚀",
       };
     }
   };
@@ -177,7 +177,7 @@ export default function ProfileCustomizationStep({
               className="bg-card p-6 rounded-xl border border-border"
             >
               <Label className="text-lg font-semibold mb-4 block">
-                What's your main learning goal? 🎯
+                What&rsquo;s your main learning goal? 🎯
               </Label>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
