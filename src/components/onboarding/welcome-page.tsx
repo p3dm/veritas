@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Sparkles, BookOpen, Trophy, Users } from "lucide-react";
 
 interface WelcomePageProps {

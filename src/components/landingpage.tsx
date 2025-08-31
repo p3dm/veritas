@@ -13,5 +13,5 @@ export function LandingPage() {
         <Footer />
       </div>
     </main>
-  );  
+  );
 }
