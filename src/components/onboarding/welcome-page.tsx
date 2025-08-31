@@ -74,9 +74,9 @@ export default function WelcomePage({ onNext }: WelcomePageProps) {
             Welcome to EduQuest! 🚀
           </h1>
           <p className="text-xl text-muted-foreground text-pretty leading-relaxed">
-            Get ready for an amazing learning adventure! We're excited to help
-            you discover new knowledge and achieve your goals. Let's personalize
-            your experience together! 🌈
+            Get ready for an amazing learning adventure! We&apos;re excited to
+            help you discover new knowledge and achieve your goals. Let&apos;s
+            personalize your experience together! 🌈
           </p>
         </motion.div>
 
@@ -118,7 +118,7 @@ export default function WelcomePage({ onNext }: WelcomePageProps) {
             size="lg"
             className="text-lg px-8 py-6 pulse-glow hover:scale-105 transition-transform duration-200"
           >
-            Let's Get Started! 🎯
+            Let&apos;s Get Started! 🎯
           </Button>
         </motion.div>
 

@@ -132,8 +132,8 @@ export default function CompletionStep({ data }: CompletionStepProps) {
             </h3>
             <p className="text-muted-foreground">
               Based on your interests in{" "}
-              <strong>{data.interests.join(", ")}</strong>, we've curated the
-              perfect learning experience just for you!
+              <strong>{data.interests.join(", ")}</strong>, we&apos;ve curated
+              the perfect learning experience just for you!
             </p>
           </div>
 
