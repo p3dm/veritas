@@ -71,7 +71,7 @@ export const Heading = () => {
                 transition={{ duration: DURATION, ease: EASE_OUT }}
                 className="inline-block"
               >
-                Let's dive in
+                Let&apos;s dive in
               </motion.span>
 
               {isOpen && (
