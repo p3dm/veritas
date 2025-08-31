@@ -34,7 +34,6 @@ export function ThemeToggle() {
 
   return (
     <Button
-      variant="secondary"
       size="icon"
       className="group/toggle size-8 hover:cursor-pointer"
       onClick={handleThemeToggle}

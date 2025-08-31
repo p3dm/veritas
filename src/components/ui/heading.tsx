@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { Button, buttonVariants } from "./button";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { X } from 'lucide-react';
+import Link from "next/link";
 import { Cross1Icon } from "@radix-ui/react-icons";
 
 const DURATION = 0.3;
@@ -42,7 +42,7 @@ export const Heading = () => {
   }, []);
 
   return (
-    <div className="flex overflow-hidden relative flex-col gap-4 justify-center items-center w-full h-full min-h-screen">
+    <div className="flex relative overflow-hidden flex-col gap-4 justify-center items-center pt-10 w-full h-full short:lg:pt-10 pb-footer-safe-area 2xl:pt-footer-safe-area px-sides short:lg:gap-4 lg:gap-8">
       <motion.div
         layout="position"
         transition={{ duration: DURATION, ease: EASE_OUT }}
@@ -90,7 +90,7 @@ export const Heading = () => {
                   delay: DELAY,
                 }}
               >
-                <Cross1Icon className="size-5 text-primary-foreground" />
+                <Cross1Icon className="size-5 text-foreground" />
               </motion.div>
             )}
           </Button>
@@ -127,7 +127,15 @@ export const Heading = () => {
                 <li>
                   <button className={buttonVariants({ variant: "link", size: "sm" })}>Contact</button>
                 </li>
-                <li className="ml-auto">
+                <li>
+                  <button className={buttonVariants({ variant: "link", size:"sm"})}>
+                    <Link href="/auth/login">Login</Link>
+                  </button>
+                </li>
+                <li>
+                  <button className={buttonVariants({ variant: "link", size:"sm"})}>
+                    <Link href="/auth/sign-up">Sign up</Link>
+                  </button>
                 </li>
               </ul>
             </div>

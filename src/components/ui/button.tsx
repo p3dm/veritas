@@ -11,10 +11,10 @@ const buttonVariants = cva(
       variant: {
         default:
           "border border-border/50 hover:border-border/15 hover:cursor-pointer bg-primary/20 focus-visible:bg-primary/30 hover:bg-primary/30 backdrop-blur-sm text-primary ring-1 ring-offset-primary/10 ring-border/10 ring-offset-2 hover:ring-primary/15 hover:ring-offset-4 hover:ring-offset-black/20 shadow-button hover:shadow-button-hover",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        ghost: "hover:bg-accent hover:text-accent-foreground hover:cursor-pointer",
+        link: "text-primary underline-offset-4 hover:underline hover:cursor-pointer",
         iconButton:
-          "border border-border/50 hover:border-border/15 bg-primary disabled:bg-primary/40 hover:bg-primary backdrop-blur-sm disabled:text-primary-foreground/50 text-primary-foreground ring-1 ring-offset-transparent ring-transparent ring-offset-2 hover:ring-primary/15 hover:ring-offset-4 hover:ring-offset-black/20 shadow-button hover:shadow-button-hover",
+          "border border-border/50 hover:border-border/15 bg-primary-foreground disabled:bg-primary/40 hover:bg-primary backdrop-blur-sm disabled:text-primary-foreground/50 text-primary-foreground ring-1 ring-offset-transparent ring-transparent ring-offset-2 hover:ring-primary/15 hover:ring-offset-4 hover:ring-offset-black/20 shadow-button hover:shadow-button-hover hover:cursor-pointer",
       },
       size: {
         default: "h-9 px-4 py-2",
