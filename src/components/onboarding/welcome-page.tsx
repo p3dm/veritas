@@ -117,6 +117,7 @@ export default function WelcomePage({ onNext }: WelcomePageProps) {
             onClick={onNext}
             size="lg"
             className="text-lg px-8 py-6 pulse-glow hover:scale-105 transition-transform duration-200"
+            variant="khanh"
           >
             Let&apos;s Get Started! 🎯
           </Button>

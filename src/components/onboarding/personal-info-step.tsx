@@ -158,7 +158,6 @@ export default function PersonalInfoStep({
       >
         <div className="max-w-2xl mx-auto flex justify-between items-center">
           <Button
-            variant="outline"
             onClick={onPrev}
             className="flex items-center gap-2 bg-transparent"
           >

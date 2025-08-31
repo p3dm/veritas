@@ -126,7 +126,6 @@ export function SignUpForm({
             <div className="flex flex-col gap-3">
               <Button
                 type="button"
-                variant="outline"
                 className="w-full h-11 border border-gray-300 hover:bg-gray-50 hover:cursor-pointer"
                 onClick={handleGoogleSignIn}
               >
@@ -136,7 +135,6 @@ export function SignUpForm({
 
               <Button
                 type="button"
-                variant="outline"
                 className="w-full h-11 border border-gray-300 hover:bg-gray-50 hover:cursor-pointer"
                 onClick={handleFacebookSignIn}
               >
