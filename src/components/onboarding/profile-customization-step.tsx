@@ -224,7 +224,6 @@ export default function ProfileCustomizationStep({
       >
         <div className="max-w-4xl mx-auto flex justify-between items-center">
           <Button
-            variant="outline"
             onClick={onPrev}
             className="flex items-center gap-2 bg-transparent"
           >

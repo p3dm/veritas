@@ -43,7 +43,6 @@ export default function OnboardingFooter({
         <div className="flex justify-between items-center">
           {onPrev ? (
             <Button
-              variant="outline"
               onClick={onPrev}
               disabled={!canGoPrev}
               className="flex items-center gap-2 bg-transparent"
