@@ -141,7 +141,7 @@ export function LoginForm({
                 <span className="w-full border-t border-gray-300" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-background px-2 text-foreground">OR</span>
+                <span className="bg-card px-2 text-foreground">OR</span>
               </div>
             </div>
 
@@ -188,11 +188,11 @@ export function LoginForm({
               </div>
             </form>
 
-            <div className="text-center text-sm text-gray-600">
+            <div className="text-center text-sm text-foreground">
               Don&apos;t have an account?{" "}
               <Link
                 href="/auth/sign-up"
-                className="text-gray-900 hover:text-gray-700 underline underline-offset-4"
+                className="text-foreground hover:text-gray-700 underline underline-offset-4"
               >
                 Sign up
               </Link>

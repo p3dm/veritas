@@ -41,7 +41,7 @@ export const Heading = () => {
   }, []);
 
   return (
-    <div className="flex relative overflow-hidden flex-col gap-4 justify-center items-center pt-10 w-full h-full short:lg:pt-10 pb-footer-safe-area 2xl:pt-footer-safe-area px-sides short:lg:gap-4 lg:gap-8">
+    <div className="flex fixed overflow-hidden flex-col gap-4 justify-center items-center pt-10 w-full h-full short:lg:pt-10 pb-footer-safe-area 2xl:pt-footer-safe-area px-sides short:lg:gap-4 lg:gap-8">
       <motion.div
         layout="position"
         transition={{ duration: DURATION, ease: EASE_OUT }}
@@ -78,7 +78,7 @@ export const Heading = () => {
                 <motion.div
                   className={cn(
                     buttonVariants({ variant: "iconButton", size: "icon" }),
-                    "absolute -top-px -right-px aspect-square",
+                    "absolute -top-px -right-px aspect-square bg-background",
                   )}
                   initial={{ opacity: 0, scale: 0.8, rotate: -40 }}
                   animate={{ opacity: 1, scale: 1, rotate: 0 }}

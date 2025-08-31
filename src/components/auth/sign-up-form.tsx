@@ -126,7 +126,7 @@ export function SignUpForm({
             <div className="flex flex-col gap-3">
               <Button
                 type="button"
-                className="w-full h-11 border border-gray-300 hover:bg-gray-50 hover:cursor-pointer"
+                className="w-full h-11 border border-border hover:bg-gray-50 hover:cursor-pointer"
                 onClick={handleGoogleSignIn}
               >
                 <Icons.google className="w-5 h-5" />
@@ -135,7 +135,7 @@ export function SignUpForm({
 
               <Button
                 type="button"
-                className="w-full h-11 border border-gray-300 hover:bg-gray-50 hover:cursor-pointer"
+                className="w-full h-11 border border-border hover:bg-gray-50 hover:cursor-pointer"
                 onClick={handleFacebookSignIn}
               >
                 <Icons.facebook className="w-5 h-5" />
@@ -145,10 +145,10 @@ export function SignUpForm({
 
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t border-gray-300" />
+                <span className="w-full border-t border-border" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-white px-2 text-gray-500">OR</span>
+                <span className="bg-card px-2 text-foreground">OR</span>
               </div>
             </div>
 
@@ -199,11 +199,11 @@ export function SignUpForm({
                 </Button>
               </div>
             </form>
-            <div className="text-center text-sm text-gray-600">
+            <div className="text-center text-sm text-foreground">
               Already have an account?{" "}
               <Link
                 href="/auth/login"
-                className="text-gray-900 hover:text-gray-700 underline underline-offset-4"
+                className="text-foreground hover:text-gray-700 underline underline-offset-4"
               >
                 Login
               </Link>
