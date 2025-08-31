@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Sparkles, BookOpen, Trophy, Users } from "lucide-react";
 
 interface WelcomePageProps {
@@ -117,6 +117,7 @@ export default function WelcomePage({ onNext }: WelcomePageProps) {
             onClick={onNext}
             size="lg"
             className="text-lg px-8 py-6 pulse-glow hover:scale-105 transition-transform duration-200"
+            variant="khanh"
           >
             Let&apos;s Get Started! 🎯
           </Button>
