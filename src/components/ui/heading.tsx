@@ -9,8 +9,7 @@ import { Cross1Icon } from "@radix-ui/react-icons";
 const DURATION = 0.3;
 const DELAY = DURATION;
 const EASE_OUT = "easeOut";
-const EASE_IN = "easeIn";
-const EASE_OUT_OPACITY = [0.25, 0.46, 0.45, 0.94] as const;
+// const EASE_OUT_OPACITY = [0.25, 0.46, 0.45, 0.94] as const;
 const SPRING = {
   type: "spring" as const,
   damping: 20,
