@@ -14,6 +14,7 @@ import { AlignHorizontalDistributeEndIcon } from "lucide-react";
 const DURATION = 0.3;
 const DELAY = DURATION;
 const EASE_OUT = "easeOut";
+const EASE_IN = "easeIn";
 // const EASE_OUT_OPACITY = [0.25, 0.46, 0.45, 0.94] as const;
 const SPRING = {
   type: "spring" as const,
@@ -23,7 +24,7 @@ const SPRING = {
 
 export const Heading = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [sectionActive, setSectionActive] = useState("overview")
+  const [sectionActive, setSectionActive] = useState("overview");
   const isInitialRender = useRef(true);
 
   useEffect(() => {
@@ -50,14 +51,16 @@ export const Heading = () => {
     <div className="flex fixed overflow-hidden flex-col gap-4 justify-center items-center pt-10 w-full h-full short:lg:pt-10 pb-footer-safe-area 2xl:pt-footer-safe-area px-sides short:lg:gap-4 lg:gap-8">
       <motion.div
         layout="position"
-        transition={{ duration: DURATION, ease: EASE_OUT }}
+        transition={{ duration: DURATION, ease: EASE_IN }}
       >
-        <motion.h1
-          layoutId="title"
-          className="font-arcuata items-center text-5xl short:lg:text-8xl sm:text-8xl lg:text-9xl text-foreground"
-        >
-          Veritas English
-        </motion.h1>
+        {!isOpen && (
+          <motion.h1
+            layoutId="title"
+            className="font-arcuata items-center text-5xl short:lg:text-8xl sm:text-8xl lg:text-9xl text-foreground"
+          >
+            Veritas English
+          </motion.h1>
+        )}
       </motion.div>
       <div className="flex flex-col items-center min-h-0 shrink">
         <AnimatePresence>
@@ -65,7 +68,9 @@ export const Heading = () => {
             layout="position"
             transition={SPRING}
             key="button"
-            className={isOpen ? "absolute bottom-15 left-1/2 -translate-x-1/2" : "mt-6"}
+            className={
+              isOpen ? "absolute bottom-15 left-1/2 -translate-x-1/2" : "mt-6"
+            }
           >
             <Button
               className={cn("relative px-8 py-4 bottom-0")}
@@ -156,48 +161,41 @@ export const Heading = () => {
                     </Button>
                   </div>
                 </div>
-                  <div className="h-6 w-px bg-border/50" />
-                  <div>
-                    <Button
-                      variant="link"
-                      size="sm"
-                    >
-                      <Link href="/auth/login">Login</Link>
-                    </Button>
-                  </div>
-                  <div>
-                    <Button
-                      variant="link"
-                      size="sm"
-                    >
-                      <Link href="/auth/sign-up">Sign up</Link>
-                    </Button>
-                  </div>
+                <div className="h-6 w-px bg-border/50" />
+                <div>
+                  <Button variant="link" size="sm">
+                    <Link href="/auth/login">Login</Link>
+                  </Button>
+                </div>
+                <div>
+                  <Button variant="link" size="sm">
+                    <Link href="/auth/sign-up">Sign up</Link>
+                  </Button>
+                </div>
               </div>
             </motion.nav>
-            
-          )}
-          {isOpen && (
-            <motion.article
-              key="article"
-              initial={{ opacity: 0, y: -10, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.98 }}
-              transition={{
-                duration: DURATION,
-                ease: EASE_OUT,
-              }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 w-full max-w-2xl px-4"
-            >
-              <article className="rounded-lg border border-border bg-background/70 backdrop-blur-xl ring-1 ring-border shadow-button p-6">
-                {sectionActive === "overview" && <Overview />}
-                {sectionActive === "courses" && <Courses />}
-                {sectionActive === "pricing" && <Pricing />}
-                {sectionActive === "contact" && <Contact />}
-              </article>
-            </motion.article>
           )}
         </AnimatePresence>
+        {isOpen && (
+          <motion.article
+            key="article"
+            initial={{ opacity: 0, y: -10, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.98 }}
+            transition={{
+              duration: 0.2,
+              ease: EASE_OUT,
+            }}
+            className="relative flex min-h-0 flex-shrink overflow-hidden text-sm md:text-base max-h-[calc(70dvh-var(--footer-safe-area))] flex-col gap-8 text-center backdrop-blur-xl text-balance border-2 border-border/50 bg-primary/20 max-w-3xl text-foreground rounded-3xl ring-1 ring-offset-primary/10 ring-border/10 ring-offset-2 shadow-button"
+          >
+            <article className="relative overflow-y-auto italic p-6 h-full [&_p]:my-4">
+              {sectionActive === "overview" && <Overview />}
+              {sectionActive === "courses" && <Courses />}
+              {sectionActive === "pricing" && <Pricing />}
+              {sectionActive === "contact" && <Contact />}
+            </article>
+          </motion.article>
+        )}
       </div>
     </div>
   );
