@@ -9,7 +9,6 @@ import { Overview } from "@/lib/data/overview";
 import { Courses } from "@/lib/data/courses";
 import { Pricing } from "@/lib/data/pricing";
 import { Contact } from "@/lib/data/contact";
-import { AlignHorizontalDistributeEndIcon } from "lucide-react";
 
 const DURATION = 0.3;
 const DELAY = DURATION;
