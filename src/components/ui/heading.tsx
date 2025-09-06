@@ -5,6 +5,11 @@ import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Cross1Icon } from "@radix-ui/react-icons";
+import { Overview } from "@/lib/data/overview";
+import { Courses } from "@/lib/data/courses";
+import { Pricing } from "@/lib/data/pricing";
+import { Contact } from "@/lib/data/contact";
+import { AlignHorizontalDistributeEndIcon } from "lucide-react";
 
 const DURATION = 0.3;
 const DELAY = DURATION;
@@ -18,7 +23,8 @@ const SPRING = {
 
 export const Heading = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const isInitialRender = useRef(false);
+  const [sectionActive, setSectionActive] = useState("overview")
+  const isInitialRender = useRef(true);
 
   useEffect(() => {
     return () => {
@@ -59,7 +65,7 @@ export const Heading = () => {
             layout="position"
             transition={SPRING}
             key="button"
-            className={isOpen ? "my-6" : "mt-6"}
+            className={isOpen ? "absolute bottom-15 left-1/2 -translate-x-1/2" : "mt-6"}
           >
             <Button
               className={cn("relative px-8 py-4 bottom-0")}
@@ -112,70 +118,84 @@ export const Heading = () => {
                   VeritasEnglish
                 </motion.h1>
                 <div className="h-6 w-px bg-border/50" />
-                <ul className="flex items-center gap-4 text-foreground/80 text-sm">
-                  <li>
-                    <button
-                      className={buttonVariants({
-                        variant: "link",
-                        size: "sm",
-                      })}
+                <div className="flex items-center gap-4 text-foreground/80 text-sm">
+                  <div>
+                    <Button
+                      variant={sectionActive === "overview" ? "link" : "ghost"}
+                      size="sm"
+                      onClick={() => setSectionActive("overview")}
                     >
                       Overview
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      className={buttonVariants({
-                        variant: "link",
-                        size: "sm",
-                      })}
+                    </Button>
+                  </div>
+                  <div>
+                    <Button
+                      variant={sectionActive === "courses" ? "link" : "ghost"}
+                      size="sm"
+                      onClick={() => setSectionActive("courses")}
                     >
                       Courses
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      className={buttonVariants({
-                        variant: "link",
-                        size: "sm",
-                      })}
+                    </Button>
+                  </div>
+                  <div>
+                    <Button
+                      variant={sectionActive === "pricing" ? "link" : "ghost"}
+                      size="sm"
+                      onClick={() => setSectionActive("pricing")}
                     >
                       Pricing
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      className={buttonVariants({
-                        variant: "link",
-                        size: "sm",
-                      })}
+                    </Button>
+                  </div>
+                  <div>
+                    <Button
+                      variant={sectionActive === "contact" ? "link" : "ghost"}
+                      size="sm"
+                      onClick={() => setSectionActive("contact")}
                     >
                       Contact
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      className={buttonVariants({
-                        variant: "link",
-                        size: "sm",
-                      })}
+                    </Button>
+                  </div>
+                </div>
+                  <div className="h-6 w-px bg-border/50" />
+                  <div>
+                    <Button
+                      variant="link"
+                      size="sm"
                     >
                       <Link href="/auth/login">Login</Link>
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      className={buttonVariants({
-                        variant: "link",
-                        size: "sm",
-                      })}
+                    </Button>
+                  </div>
+                  <div>
+                    <Button
+                      variant="link"
+                      size="sm"
                     >
                       <Link href="/auth/sign-up">Sign up</Link>
-                    </button>
-                  </li>
-                </ul>
+                    </Button>
+                  </div>
               </div>
             </motion.nav>
+            
+          )}
+          {isOpen && (
+            <motion.article
+              key="article"
+              initial={{ opacity: 0, y: -10, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.98 }}
+              transition={{
+                duration: DURATION,
+                ease: EASE_OUT,
+              }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 w-full max-w-2xl px-4"
+            >
+              <article className="rounded-lg border border-border bg-background/70 backdrop-blur-xl ring-1 ring-border shadow-button p-6">
+                {sectionActive === "overview" && <Overview />}
+                {sectionActive === "courses" && <Courses />}
+                {sectionActive === "pricing" && <Pricing />}
+                {sectionActive === "contact" && <Contact />}
+              </article>
+            </motion.article>
           )}
         </AnimatePresence>
       </div>
